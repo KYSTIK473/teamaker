@@ -2,7 +2,7 @@
 
 
 // Используемое железо
-OneWire ds(A0);
+OneWire ds(PIN_DS);
 PCF8574 pcf(0x20);
 CustomStepper stepper_tea(pcf, 0, 1, 2, 3);
 CustomStepper stepper_sugar(pcf, 4, 5, 6, 7);
