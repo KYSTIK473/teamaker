@@ -147,6 +147,8 @@ void teaLoop()
       // Ждем пока докрутятся шаговики
       if (stepper_tea.isDone() && stepper_sugar.isDone())
       {
+        stepper_tea.disable();
+        stepper_sugar.disable();
         // Запускаем насос с кипятком
         deadline = millis() + params.waterAmount * HOT_PUMP_MS_PER_ML;
         setHotPump(true);
@@ -171,7 +173,7 @@ void teaLoop()
       if (millis() >= deadline)
       {
         // Заварилось // Работаем только если чашка стоит
-        const auto distance = cupDistance();
+        const auto distance = 0; //= cupDistance();
         if (distance <= 8)
         {
           Serial.println("dispensing!");
