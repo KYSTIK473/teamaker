@@ -152,11 +152,10 @@ class MyBL(BoxLayout):
         request = f"a={strength}&b={sugar_amount}&c={temperature}&d={tea_amount}"
         print(request)
         try:
-            print(requests.get(f'http://{ip_tea}/on?{request}'))
+            requests.get(f'http://{ip_tea}/on?{request}')
             self.data_label = f"Чаёчек)))"
-        except Exception:
-            print(123)
-            self.data_label = f"Запрос не дошёл, ошибочка(((("
+        except Exception as e:
+            self.data_label = f"Запрос не дошёл, ошибочка(((: {e}"
 
 
 class MyApp(App):
